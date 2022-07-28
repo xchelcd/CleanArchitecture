@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.login.LoginScreen">
+
+    <data>
+
+        <import type="com.example.cleanarchitecture.ui.login.LoginState" />
+
+        <import type="com.example.cleanarchitecture.util.Callback" />
+
+        <import type="com.example.cleanarchitecture.util.CallbackWithText" />
+
+        <variable
+            name="someValue"
+            type="String" />
+
+        <variable
+            name="handlerSubmit"
+            type="Callback" />
+
+        <variable
+            name="handlerUserName"
+            type="CallbackWithText" />
+
+        <variable
+            name="handlerPassword"
+            type="CallbackWithText" />
+
+        <variable
+            name="loginState"
+            type="LoginState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="52dp"
+            android:orientation="vertical"
+            android:show="@{loginState.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:hint="User name"
+                android:onTextChange="@{handlerUserName}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:hint="Password"
+                android:onTextChange="@{handlerPassword}" />
+
+            <Button
+                android:enabled="@{!loginState.loading}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:submitLogin="@{handlerSubmit}"
+                android:text="Login" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:hint="Password"
+                android:text="@{someValue}"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
