@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.home.HomeScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="com.example.cleanarchitecture.ui.home.HomeState" />
+
+        <variable
+            name="state"
+            type="HomeState" />
+    </data>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:show="@{state.loading}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.example.cleanarchitecture.util.shimmer.PostView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <com.example.cleanarchitecture.ui.home.HomeList
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:show="@{!state.loading}"
+            app:data="@{state.list}" />
+
+
+    </LinearLayout>
+
+</layout>

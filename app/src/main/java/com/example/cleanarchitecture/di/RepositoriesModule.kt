@@ -1,5 +1,7 @@
 package com.example.cleanarchitecture.di
 
+import com.example.cleanarchitecture.data.repository.HomeRepository
+import com.example.cleanarchitecture.data.repository.HomeRepositoryImp
 import com.example.cleanarchitecture.data.repository.LoginRepository
 import com.example.cleanarchitecture.data.repository.LoginRepositoryImp
 import dagger.Binds
@@ -17,5 +19,11 @@ abstract class RepositoriesModule {
     abstract fun providerLoginRepository(
         repositoryImpl: LoginRepositoryImp
     ): LoginRepository
+
+    @Singleton
+    @Binds
+    abstract fun providerHomeRepository(
+        repositoryImpl: HomeRepositoryImp
+    ): HomeRepository
 
 }
