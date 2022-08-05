@@ -22,10 +22,6 @@ fun onPress(v: View, callback: Callback) {
     v.setOnClickListener { callback.invoke() }
 }
 
-@BindingAdapter("android:onItemSelected")
-fun HomeList.onItemSelected(callback: CallbackWithObj) {
-
-}
 
 @BindingAdapter("android:onTextChange")
 fun onTextChange(editText: EditText, callback: CallbackWithText) {

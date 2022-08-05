@@ -5,9 +5,11 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.findFragment
 import com.example.cleanarchitecture.R
 import com.example.cleanarchitecture.data.model.Post
 import com.example.cleanarchitecture.databinding.WidgetHomeItemBinding
+import com.example.cleanarchitecture.ui.home.rate.RateDialog
 import com.example.cleanarchitecture.util.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,7 +20,7 @@ import kotlin.coroutines.CoroutineContext
 class HomeItem(
     context: Context,
     attrs: AttributeSet?
-) : LinearLayout(context, attrs,), CoroutineScope {
+) : LinearLayout(context, attrs), CoroutineScope {
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main + SupervisorJob()
 
@@ -53,7 +55,12 @@ class HomeItem(
     }
 
     private fun rate() {
-        binding.root.toast("Rate")
+        data?.let { post ->
+            val fragment = findFragment<HomeScreen>() as HomeScreen
+            val fragmentManager = fragment.parentFragmentManager
+
+            RateDialog(post).show(fragmentManager, "RateDialog")
+        }
     }
 
     private fun details() {

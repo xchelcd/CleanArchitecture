@@ -12,7 +12,7 @@ data class Post(
 
     val body: String
         get() {
-            return _body.take(toTake ?: TAKE_X_NUMBER)
+            return _body//.take(toTake ?: TAKE_X_NUMBER)
         }
 
 }

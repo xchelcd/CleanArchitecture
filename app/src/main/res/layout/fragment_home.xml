@@ -10,10 +10,6 @@
         <import type="com.example.cleanarchitecture.util.CallbackWithObj"/>
 
         <variable
-            name="handlerItemSelected"
-            type="CallbackWithObj" />
-
-        <variable
             name="state"
             type="HomeState" />
     </data>
@@ -75,7 +71,6 @@
         <com.example.cleanarchitecture.ui.home.HomeList
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onItemSelected="@{handlerItemSelected}"
             android:show="@{!state.loading}"
             app:data="@{state.list}" />
 

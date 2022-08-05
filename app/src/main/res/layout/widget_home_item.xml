@@ -4,7 +4,7 @@
 
     <data>
 
-        <!-- TODO change by ItemState -->
+        <!-- TODO change by HomeItemState -->
         <import type="com.example.cleanarchitecture.data.model.Post" />
 
         <import type="com.example.cleanarchitecture.util.Callback" />
