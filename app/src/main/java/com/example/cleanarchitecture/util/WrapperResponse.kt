@@ -6,7 +6,7 @@ data class WrapperResponse<T>(
 )
 
 data class Error(
-    val errorMessage: String = "",
-    val statusCode: Int = 0,
-    val details: String = "",
+    val errorMessage: String = "UnknownError",
+    val statusCode: Int = 400,
+    val details: String = "Unknown error",
 )

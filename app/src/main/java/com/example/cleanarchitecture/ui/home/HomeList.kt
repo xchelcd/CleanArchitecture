@@ -25,10 +25,8 @@ class HomeList(
 
     inner class Adapter : RecyclerView.Adapter<Adapter.Holder>() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-
-            return Holder(HomeItem(context, null))
-        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder =
+            Holder(HomeItem(context, null))
 
         override fun onBindViewHolder(holder: Holder, position: Int) {
             data[position].also(holder::onBind)

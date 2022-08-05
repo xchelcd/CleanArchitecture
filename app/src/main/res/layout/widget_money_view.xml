@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="showSymbol" type="Boolean" />
+        <variable name="symbol" type="String" />
+        <variable name="value" type="String" />
+        <variable name="code" type="String" />
+        <variable name="color" type="int" />
+        <variable name="size" type="float" />
+        <variable name="scale" type="float" />
+    </data>
+
+    <merge
+        tools:parentTag="LinearLayout"
+        tools:orientation="horizontal"
+        tools:layout_width="wrap_content"
+        tools:layout_height="wrap_content"
+        tools:background="@color/primary">
+
+        <TextView
+            android:show="@{showSymbol}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="$"
+            android:text="@{symbol}"
+            android:gravity="bottom"
+            tools:textColor="@color/white"
+            android:textColor="@{color}"
+            android:textSize="@{size}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="889,518.78"
+            android:text="@{value}"
+            android:gravity="bottom"
+            android:textColor="@{color}"
+            android:textSize="@{size}"
+            tools:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="MXN"
+            android:text="@{code}"
+            android:gravity="bottom"
+            android:textColor="@{color}"
+            tools:textColor="@color/white"
+            android:textSize="@{size*scale}"/>
+
+    </merge>
+
+</layout>

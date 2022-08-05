@@ -1,14 +1,15 @@
 package com.example.cleanarchitecture.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.cleanarchitecture.R
+import com.example.cleanarchitecture.data.model.Post
 import com.example.cleanarchitecture.databinding.FragmentHomeBinding
+import com.example.cleanarchitecture.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,9 +35,15 @@ class HomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             lifecycleOwner = this@HomeScreen
+            setHandlerItemSelected(::handlerItemSelected)
         }
     }
 
+    private fun handlerItemSelected(item: Any) {
+        if (item is Post) {
+            binding.root.toast(item.title)
+        }
+    }
 
     private fun render(state: HomeState) {
         binding.state = state

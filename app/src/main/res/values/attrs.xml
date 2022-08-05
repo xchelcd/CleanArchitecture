@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MoneyView">
+        <attr name="fontSize" format="dimension" />
+        <attr name="showSymbol" format="boolean" />
+        <attr name="value" format="float" />
+        <attr name="color" format="color" />
+        <attr name="scale" format="float" />
+        <attr name="symbol" format="string" />
+        <attr name="code" format="string" />
+        <attr name="numberDecimals" format="integer" />
+    </declare-styleable>
+</resources>

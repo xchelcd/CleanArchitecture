@@ -7,6 +7,11 @@
     <data>
 
         <import type="com.example.cleanarchitecture.ui.home.HomeState" />
+        <import type="com.example.cleanarchitecture.util.CallbackWithObj"/>
+
+        <variable
+            name="handlerItemSelected"
+            type="CallbackWithObj" />
 
         <variable
             name="state"
@@ -15,6 +20,7 @@
 
 
     <LinearLayout
+        android:background="@color/gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -31,35 +37,35 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <com.example.cleanarchitecture.util.shimmer.PostView
+                <com.example.cleanarchitecture.ui.widget.shimmer.PostView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -69,6 +75,7 @@
         <com.example.cleanarchitecture.ui.home.HomeList
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onItemSelected="@{handlerItemSelected}"
             android:show="@{!state.loading}"
             app:data="@{state.list}" />
 
