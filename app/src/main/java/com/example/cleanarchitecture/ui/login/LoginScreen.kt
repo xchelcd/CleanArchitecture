@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cleanarchitecture.R
 import com.example.cleanarchitecture.databinding.FragmentLoginBinding
+import com.example.cleanarchitecture.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.observeOn
 
 @AndroidEntryPoint
 class LoginScreen : Fragment() {
@@ -36,9 +38,13 @@ class LoginScreen : Fragment() {
             setHandlerSubmit(::handlerSubmit)
             setHandlerUserName(viewModel::setUserName)
             setHandlerPassword(viewModel::setPassword)
+            setHandlerTest(::handlerTest)
         }
     }
 
+    private fun handlerTest() {
+        binding.root.toast("click")
+    }
 
     private fun handlerSubmit() {
         viewModel.tryLogin(::render) {

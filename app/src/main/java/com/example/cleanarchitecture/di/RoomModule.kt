@@ -1,4 +1,4 @@
 package com.example.cleanarchitecture.di
 
-class RoomModule {
-}
+//class RoomModule {
+//}

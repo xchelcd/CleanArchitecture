@@ -5,6 +5,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.cleanarchitecture.ui.home.HomeItem
 import com.example.cleanarchitecture.ui.home.HomeList
 
 @BindingAdapter("android:show")
@@ -20,6 +22,18 @@ fun submitLogin(v: View, callback: Callback) {
 @BindingAdapter("android:onPress")
 fun onPress(v: View, callback: Callback) {
     v.setOnClickListener { callback.invoke() }
+}
+
+@BindingAdapter("android:onItemSelected")
+fun HomeItem.onItemSelected(callback: CallbackWithObj) {
+    this.setOnClickListener { callback(this.data!!) }
+}
+
+@BindingAdapter("android:itemSelected")
+fun HomeList.itemSelected(callback: CallbackWithObj) {
+    //this.setOnItemSelected {
+    //    callback.invoke(it)
+    //}
 }
 
 

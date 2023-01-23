@@ -5,7 +5,8 @@ import com.example.cleanarchitecture.data.model.Post
 data class HomeState(
     val loading: Boolean = true,
     val list: List<Post> = emptyList(),
-    val post: Post? = null
+    val post: Post? = null,
+    val listener: ((Post) -> Unit)? = null
 ) {
 
     fun updateLoading(b: Boolean): HomeState = copy(loading = b)

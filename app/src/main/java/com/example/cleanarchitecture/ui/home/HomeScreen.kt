@@ -35,7 +35,13 @@ class HomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             lifecycleOwner = this@HomeScreen
+            setHandlerItemSelected(::handlerItemSelected)
         }
+    }
+
+    private fun handlerItemSelected(post: Any) {
+        if (post is Post) binding.root.toast(post.title)
+        else binding.root.toast("Hola")
     }
 
     private fun render(state: HomeState) {

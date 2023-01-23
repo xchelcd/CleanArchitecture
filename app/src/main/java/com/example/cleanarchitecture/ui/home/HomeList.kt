@@ -6,11 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cleanarchitecture.data.model.Post
+import com.example.cleanarchitecture.util.CallbackWithObj
+import com.example.cleanarchitecture.util.onItemSelected
+import com.example.cleanarchitecture.util.toast
 
 class HomeList(
     context: Context,
     attrs: AttributeSet
-) : RecyclerView(context, attrs) {
+) : RecyclerView(context, attrs), ListenerTest {
+
+    override fun itemSelected(function: (Post) -> Unit): Post {
+        return Post(1, "titleX", "", listOf(), "123")
+    }
 
     var data: List<Post> = emptyList()
         set(value) {
@@ -37,8 +44,16 @@ class HomeList(
         inner class Holder(private val homeItem: HomeItem) : RecyclerView.ViewHolder(homeItem) {
             fun onBind(post: Post) {
                 homeItem.data = post
+                homeItem.setOnClickListener {
+                    itemSelected {
+
+                    }
+                }
             }
         }
     }
+}
 
+interface ListenerTest {
+    fun itemSelected(function: (Post) -> Unit): Post?
 }

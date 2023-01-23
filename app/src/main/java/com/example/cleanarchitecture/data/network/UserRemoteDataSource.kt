@@ -3,44 +3,26 @@ package com.example.cleanarchitecture.data.network
 import com.example.cleanarchitecture.data.model.Post
 import com.example.cleanarchitecture.data.model.User
 import com.example.cleanarchitecture.util.Error
+import com.example.cleanarchitecture.util.Resource
 import com.example.cleanarchitecture.util.WrapperResponse
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
+import retrofit2.Response
 import javax.inject.Inject
 
 class UserRemoteDataSource @Inject constructor(
     private val apiClient: ApiClient
 ) {
 
-    suspend fun login(user: User): WrapperResponse<User> =
-        withContext(IO) {
-            delay(2000)
-            var wrapperResponse: WrapperResponse<User>
-            try {
-                //val response = api.login(user)
-                val user = User("xchel", "Carrana")
-                wrapperResponse = if (user == null) {
-                    WrapperResponse(
-                        error = Error(
-                            errorMessage = "The response body was null"
-                        )
-                    )
-                } else {
-                    WrapperResponse(
-                        //result = response.body()
-                        result = user
-                    )
-                }
-            } catch (e: Exception) {
-                wrapperResponse = WrapperResponse(
-                    error = Error(
-                        errorMessage = e.message.toString()
-                    )
-                )
-            }
-            wrapperResponse
-        }
+    suspend fun login(user: User): Resource = withContext(IO) {
+        val loginResponse: Response<User> = apiClient.login(user)
+        return@withContext if (loginResponse.isSuccessful && loginResponse.body() != null && loginResponse.code() == 200)
+            Resource.Successful(loginResponse.body())
+        else Resource.Error(Error(loginResponse.errorBody().toString()))
+    }
+
 
     suspend fun getAllPost(): WrapperResponse<List<Post>> = withContext(IO) {
         delay(500)

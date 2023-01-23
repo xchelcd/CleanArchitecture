@@ -8,5 +8,9 @@ import javax.inject.Inject
 class GetAllPost @Inject constructor(
     private val repository: HomeRepository
 ){
-    suspend operator fun invoke(): WrapperResponse<List<Post>> = repository.getAllPost()
+    suspend operator fun invoke(): WrapperResponse<List<Post>>{
+        val loginResponse = repository.getAllPost()
+
+        return loginResponse
+    }
 }
